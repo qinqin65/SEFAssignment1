@@ -1,17 +1,16 @@
-package main;
-
+import Game.*;
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.*;
 
 import org.junit.Test;
 
 public  class PlayerTest {
-	Grid grid;
+	Map grid;
+	Player players[];
 	Player player;
-	Cell c;
-	Moveable currentCell;
+	Position c;
+	Role currentCell;
 	
 	
 	@Before
@@ -21,9 +20,9 @@ public  class PlayerTest {
 	
 	@Before
 	public void setMove() throws Exception {
-		grid = new Grid();
+		grid = new Map();
 		player = new Player(grid, 0, 0);
-		c = new Cell(0, 0);
+		c = new Position(0, 0);
 		
 	}
 	
@@ -31,27 +30,27 @@ public  class PlayerTest {
 	@Test
 	public void testMove() throws Exception {
 		player.setDirection('R');
-		player.setCell(c);
-		player.getCell();
+		player.setPosition(c);
+		player.getPosition();
 		player.getDirection();
-		c = grid.getCell(player.getCell(), player.getDirection());
+		c = grid.getCell(player.getPosition(), player.getDirection());
 		assertEquals(c,player.move());
 	}
 
 	@Test
 	public void testMaxCellsPerMove() throws Exception {
-		Cell c1 = new Cell(0,0);
-		Cell c2 = new Cell(1,0);
-		assertEquals(2,grid.distance(c1, c2));
+		Position c1 = new Position(0,0);
+		Position c2 = new Position(1,0);
+		assertEquals(2,Utils.distance(c1, c2));
 	}
 
 
 	@Test
 	public void testSetDirection() {
 		char c = 'R';
-		Moveable instance = new Moveable(grid) {
+		Role instance = new Role() {
 			@Override
-			public Cell move() {
+			public Position move() {
 				// TODO Auto-generated method stub
 				return null;
 			}};
@@ -61,9 +60,9 @@ public  class PlayerTest {
 
 	@Test
 	public void testGetDirection() throws Exception {
-		Moveable instance = new Moveable(grid) {
+		Role instance = new Role() {
 			@Override
-			public Cell move() {
+			public Position move() {
 				// TODO Auto-generated method stub
 				return null;
 			}
