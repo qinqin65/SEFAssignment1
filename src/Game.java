@@ -43,12 +43,12 @@ public class Game extends JFrame {
         }
         do {
             Position newPlayerCell = player.move();
-            if (newPlayerCell == monster.getCell())
+            if (newPlayerCell == monster.getPosition())
                 break;
             player.setDirection(' ');   // reset to no direction
 
             Position newMonsterCell = monster.move();
-            if (newMonsterCell == player.getCell()) {
+            if (newMonsterCell == player.getPosition()) {
                 break;
             }
 
