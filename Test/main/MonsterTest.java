@@ -12,6 +12,7 @@ public class MonsterTest {
 	Cell c1;
 	char currentDirection;
 	Cell currentCell;
+	Moveable mv;
 
 	@Before
 	public void setUp() throws Exception {
@@ -21,21 +22,26 @@ public class MonsterTest {
 		c = new Cell(0, 0);
 		c1 = new Cell(1, 0);
 		currentCell = new Cell(0, 0);
-		//currentDirection = new Cell(0, 0);
-		
+		mv = new Moveable(grid) {
+			@Override
+			public Cell move() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
 	}
 
 	@Test
 	public void test() {
 		player.setCell(c);
 		player.getCell();
-		monster.setCell(c1);
-		monster.getCell();
-		//player.setDirection('R');
-		//player.getDirection();
-		currentDirection = grid.getBestDirection(c1, c);
-		//currentCell = (grid.getCell(player.getCell(), player.getDirection()));
-		assertEquals(1, currentDirection);
+		mv.setCell(c1);
+		mv.getCell();
+		mv.setDirection('R');
+		mv.getDirection();
+		currentDirection = grid.getBestDirection(mv.getCell(), player.getCell());
+		currentCell = grid.getCell(mv.getCell(), mv.getDirection());
+		assertEquals(mv.getDirection(),currentDirection);
 	}
 
 }
