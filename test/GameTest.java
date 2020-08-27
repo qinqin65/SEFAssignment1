@@ -1,15 +1,20 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-
-import javax.swing.*;
 import java.awt.*;
 
 public class GameTest {
-    @Test
-    public void Game() {
-        Game newGame = new Game();
+    private Game newGame;
+
+    @Before
+    public void setUp() {
+        newGame = new Game();
         newGame.setTitle("Pacman Game");
         newGame.setSize(700,700);
+    }
+
+    @Test
+    public void Game() {
         Assert.assertEquals("Pacman Game", newGame.getTitle());
         Dimension d = newGame.getSize();
         Assert.assertEquals(700, d.width);
