@@ -2,7 +2,6 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class Board extends JPanel implements KeyEventHandler {
     private Map map;
@@ -48,13 +47,13 @@ public class Board extends JPanel implements KeyEventHandler {
                 gr.drawRect(xCor(cell.x), yCor(cell.y), CELLWIDTH, CELLHEIGHT);
             }
         }
-        cell = player.getCell();
+        cell = player.getPosition();
         gr.setColor(Color.red);
         gr.fillOval(xCor(cell.x)+CELLWIDTH/8, yCor(cell.y)+CELLWIDTH/8, CELLWIDTH*3/4, CELLHEIGHT*3/4);
         gr.setColor(Color.white);
         gr.drawString("P",xCor(cell.x)+CELLWIDTH/3, yCor(cell.y)+2*CELLWIDTH/3);
 
-        cell = monster.getCell();
+        cell = monster.getPosition();
         gr.setColor(Color.black);
         gr.fillRect(xCor(cell.x), yCor(cell.y), CELLWIDTH, CELLHEIGHT);
         gr.setColor(Color.white);

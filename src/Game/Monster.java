@@ -63,8 +63,8 @@ public class Monster extends Role {
     @Override
     public Position move() {
         Player player = players[0];
-        currentDirection = this.getBestDirection(currentPosition, player.getCell());
-        currentPosition = map.getCell(getCell(), getDirection());
+        currentDirection = this.getBestDirection(currentPosition, player.getPosition());
+        currentPosition = map.getCell(getPosition(), getDirection());
         return currentPosition;
     }
 }

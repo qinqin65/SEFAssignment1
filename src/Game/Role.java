@@ -13,11 +13,11 @@ public abstract class Role {
         return currentDirection;
     }
 
-    public void setCell(Position c) {
+    public void setPosition(Position c) {
         currentPosition = c;
     }
 
-    public Position getCell() {
+    public Position getPosition() {
         return currentPosition;
     }
 
